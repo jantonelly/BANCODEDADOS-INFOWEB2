@@ -1,0 +1,30 @@
+CREATE DATABASE AppcomBD;
+GO
+
+USE AppcomBD;
+GO
+
+CREATE TABLE Cliente(
+	id INT IDENTITY(1,1) PRIMARY KEY,
+	nome VARCHAR(100) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	fone VARCHAR(50) NOT NULL
+);
+GO
+CREATE TABLE Servico(
+	id INT IDENTITY (1,1) PRIMARY KEY,
+	descricao VARCHAR (200) NOT NULL,
+	valor DECIMAL(6,2) NOT NULL
+);
+GO
+
+CREATE TABLE Horario(
+	id INT IDENTITY(1,1) PRIMARY KEY,
+	data_horario DATETIME NOT NULL,
+	confirmado TINYINT NOT NULL,
+	Cliente_id INT,
+	Servico_id INT,
+	FOREIGN KEY (Cliente_id) REFERENCES Cliente(id),
+	FOREIGN KEY (Servico_id) REFERENCES Servico(id)
+);
+GO
