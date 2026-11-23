@@ -24,3 +24,5 @@ class Horario:
     def __str__(self):
         return f"{self.__id} - {self.__data.strftime('%d/%m/%Y %H:%M')} - {self.__confirmado}"
 
+    def to_dict(self):
+        return {'id': self.__id, 'data': datetime.strptime(self.__data, "%d/%m/%Y %H:%M"), 'confirmado': self.__confirmado}

@@ -13,7 +13,7 @@ CREATE TABLE Cliente(
 GO
 CREATE TABLE Servico(
 	id INT IDENTITY (1,1) PRIMARY KEY,
-	descricao VARCHAR (200) NOT NULL,
+	descricao VARCHAR (100) NOT NULL,
 	valor DECIMAL(6,2) NOT NULL
 );
 GO
@@ -22,8 +22,8 @@ CREATE TABLE Horario(
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	data_horario DATETIME NOT NULL,
 	confirmado TINYINT NOT NULL,
-	Cliente_id INT,
-	Servico_id INT,
+	Cliente_id INT NOT NULL,
+	Servico_id INT NOT NULL,
 	FOREIGN KEY (Cliente_id) REFERENCES Cliente(id),
 	FOREIGN KEY (Servico_id) REFERENCES Servico(id)
 );

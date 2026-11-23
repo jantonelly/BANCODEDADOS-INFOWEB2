@@ -3,15 +3,16 @@ import pyodbc
 
 class ClienteDAO:
     def __init__(self):
-        self.__conexao = pyodbc.connect('Driver={ODBC Driver 17 for SQL Server};Server=.;Database=Matheus;UID=sa;PWD=senha@12345')
+        self.__conexao = pyodbc.connect('Driver={ODBC Driver 17 for SQL Server};Server=.;Database=AppcomBD;UID=sa;PWD=senha@12345')
 
     def inserir(self, obj):
         cursor = self.__conexao.cursor()
-        cursor.execute(
-            f'''
-                INSERT INTO Cliente(nome, email, fone) 
-                VALUES ({obj.get_nome()}, {obj.get_email()}, {obj.get_fone()})
-            '''
+        sql = f'''
+                        INSERT INTO Cliente(nome, email, fone) 
+                        VALUES ('{obj.get_nome()}', '{obj.get_email()}', '{obj.get_fone()}')
+                    '''
+        print(sql)
+        cursor.execute(sql
         )
         self.__conexao.commit()
 
@@ -30,7 +31,7 @@ class ClienteDAO:
         cursor.execute(
             f'SELECT id, nome, email, fone FROM Cliente WHERE id = {id}',
         )
-        reg = cursor.fetchall()
+        reg = cursor.fetchone()
         if reg:
             obj = Cliente(reg[0], reg[1], reg[2], reg[3])
             return obj
@@ -39,7 +40,7 @@ class ClienteDAO:
     def atualizar(self, obj):
         cursor = self.__conexao.cursor()
         cursor.execute(
-            f'UPDATE Cliente SET nome = {obj.get_nome()}, email = {obj.get_email()}, fone = {obj.get_fone()} WHERE id = {obj.get_id()}'
+            f"UPDATE Cliente SET nome = '{obj.get_nome()}', email = '{obj.get_email()}', fone = '{obj.get_fone()}' WHERE id = {obj.get_id()}"
         )
         self.__conexao.commit()
 

@@ -20,4 +20,6 @@ class Servico:
 
     def __str__(self):
         return f"{self.__id} - {self.__descricao} - {self.__valor}"
-        
+
+    def to_dict(self):
+        return {'id': self.__id, 'descricao': self.__descricao, 'valor': self.__valor}

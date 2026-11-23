@@ -73,4 +73,3 @@ class ManterHorarioUI:
                 st.success("Horário excluído com sucesso")
                 time.sleep(2)
                 st.rerun()
-
