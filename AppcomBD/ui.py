@@ -87,8 +87,8 @@ class UI:
     @staticmethod
     def horario_inserir():
         #id = int(input("Informe o id: "))
-        data = datetime.strptime(input("Informe o horário: "), "%d/%m/%Y %H:%M")
-        Service.horario_inserir(data)
+        data_horario = datetime.strptime(input("Informe o horário: "), "%d/%m/%Y %H:%M")
+        Service.horario_inserir(data_horario)
 
     @staticmethod
     def horario_listar():
@@ -98,8 +98,8 @@ class UI:
     def horario_atualizar():
         for obj in Service.horario_listar(): print(obj)
         id = int(input("Informe o id do horário a ser atualizado: "))
-        data = datetime.strptime(input("Informe o novo horário: "), "%d/%m/%Y %H:%M")
-        Service.horario_atualizar(id, data)
+        data_horario = datetime.strptime(input("Informe o novo horário: "), "%d/%m/%Y %H:%M")
+        Service.horario_atualizar(id, data_horario)
 
     @staticmethod
     def horario_excluir():

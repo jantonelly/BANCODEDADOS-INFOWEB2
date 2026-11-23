@@ -1,18 +1,18 @@
 from datetime import datetime
 
 class Horario:
-    def __init__(self, id, data):
+    def __init__(self, id, data_horario):
         self.set_id(id)
-        self.set_data(data)
+        self.set_data(data_horario)
         self.set_confirmado(False)
         self.set_id_cliente(0)
         self.set_id_servico(0)
 
     def set_id(self, id): self.__id = id
-    def set_data(self, data): self.__data = data
+    def set_data(self, data_horario): self.__data = data_horario
     def set_confirmado(self, confirmado): self.__confirmado = confirmado
-    def set_id_cliente(self, id_cliente): self.__id_cliente = id_cliente
-    def set_id_servico(self, id_servico): self.__id_servico = id_servico
+    def set_id_cliente(self, Cliente_id): self.__id_cliente = Cliente_id
+    def set_id_servico(self, Servico_id): self.__id_servico = Servico_id
 
     def get_id(self): return self.__id
     def get_data(self): return self.__data

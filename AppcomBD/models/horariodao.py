@@ -10,7 +10,7 @@ class HorarioDAO:
         cursor = self.__conexao.cursor()
         cursor.execute(
             '''
-            INSERT INTO Horario (data, confirmado, Cliente_id, Servico_id)
+            INSERT INTO Horario (data_horario, confirmado, Cliente_id, Servico_id)
             VALUES (?, ?, ?, ?)
         ''',
         obj.get_data(),
@@ -22,7 +22,7 @@ class HorarioDAO:
 
     def listar(self):                
         cursor = self.__conexao.cursor()
-        cursor.execute('SELECT id, data, confirmado, Cliente_id, Servico_id FROM Horario')
+        cursor.execute('SELECT id, data_horario, confirmado, Cliente_id, Servico_id FROM Horario')
         registros = cursor.fetchall()
         objetos = []
         for reg in registros:
@@ -36,7 +36,7 @@ class HorarioDAO:
     def listar_id(self, id):
         cursor = self.__conexao.cursor()
         cursor.execute(
-            f'SELECT id, data, confirmado, Cliente_id, Servico_id FROM Horario WHERE id = {id}'
+            f'SELECT id, data_horario, confirmado, Cliente_id, Servico_id FROM Horario WHERE id = {id}'
         )
         reg = cursor.fetchone()
         if reg:
@@ -52,7 +52,7 @@ class HorarioDAO:
         cursor.execute(
             '''
                 UPDATE Horario
-                SET data = ?, confirmado = ?,Cliente_id = ?, Servico_id = ?
+                SET data_horario = ?, confirmado = ?,Cliente_id = ?, Servico_id = ?
                 WHERE id = ?
             ''',
             obj.get_data(),
