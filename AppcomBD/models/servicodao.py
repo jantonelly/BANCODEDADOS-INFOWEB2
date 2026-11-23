@@ -3,7 +3,7 @@ import pyodbc
 
 class ServicoDAO:
     def __init__(self):
-        self.__conexao = pyodbc.connect('Driver={ODBC Driver 17 for SQL Server};Server=.;Database=AppcomBD;UID=sa;PWD=senha@12345')
+        self.__conexao = pyodbc.connect('Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=AppcomBD;UID=sa;PWD=senha@12345')
 
     def inserir(self, obj):
         cursor = self.__conexao.cursor()
